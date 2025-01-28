@@ -1,0 +1,33 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>netstandard2.0</TargetFramework>
+		<AssemblyName>OrnaLibs.Application</AssemblyName>
+		<RootNamespace>OrnaLibs.Application</RootNamespace>
+		<GenerateDocumentationFile>True</GenerateDocumentationFile>
+		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+		<PackageId>OrnaLibs.Application</PackageId>
+		<Version>0.0.0</Version>
+		<Title>OrnaLibs.Application</Title>
+		<Authors>OrnarasUS</Authors>
+		<Company>OrnaLibs</Company>
+		<Product>OrnaLibs.Application</Product>
+		<RepositoryUrl>https://github.com/OrnaLibs/Application</RepositoryUrl>
+		<AssemblyVersion>0.0.0</AssemblyVersion>
+		<FileVersion>0.0.0</FileVersion>
+		<IncludeSymbols>True</IncludeSymbols>
+		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
+		<PackageReleaseNotes>
+			- ReleaseNotes
+		</PackageReleaseNotes>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+		<CheckForOverflowUnderflow>True</CheckForOverflowUnderflow>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+		<CheckForOverflowUnderflow>True</CheckForOverflowUnderflow>
+	</PropertyGroup>
+
+</Project>

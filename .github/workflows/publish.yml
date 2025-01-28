@@ -1,0 +1,27 @@
+name: Publish library
+
+on:
+  pull_request:
+    types: [ closed ]
+    branches: [ "main" ]
+
+jobs:
+  publish:
+    runs-on: ubuntu-22.04
+    steps:
+    - name: Checkout project
+      uses: actions/checkout@v4
+    - name: Update version record
+      run: sed -i -e "s/0.0.0/${{ github.event.pull_request.title }}/g" OrnaLibs.Application.csproj
+    - name: Install .NET Standard 2.0
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: 2.0
+    - name: Build project
+      run: dotnet build
+    - name: Set variables
+      id: vars
+      run: echo "nupkg=bin/Debug/$(ls bin/Debug | grep '\.nupkg')" >> $GITHUB_OUTPUT
+    - name: Publish to NuGet
+      run: dotnet nuget push ${{ steps.vars.outputs.nupkg }} --api-key ${{ secrets.TOKEN_NUGET }} --source https://api.nuget.org/v3/index.json
+    
